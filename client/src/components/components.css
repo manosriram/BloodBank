@@ -29,7 +29,7 @@ nav {
   width: 100% !important;
   max-height: 70px;
   overflow: hidden;
-  background: #ba2f16;
+  background: #218f76;
   color: white;
 }
 
@@ -39,7 +39,7 @@ nav {
 
 #navbar h1 {
   float: left;
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 #navbar h1 a {
@@ -47,8 +47,7 @@ nav {
 }
 
 #navbar h1 a:hover {
-  background: white;
-  color: #e84342;
+  text-decoration: underline;
 }
 
 #home {
@@ -67,15 +66,11 @@ nav {
 
 #navbar ul li a {
   display: block;
-  padding: 20px;
+  padding-top: 20px;
+  padding-right: 10px;
   text-align: center;
 }
 
-#navbar ul li a:hover {
-  background: white;
-  text-decoration: none;
-  color: #e84342;
-}
 .search-container {
   float: right;
 }

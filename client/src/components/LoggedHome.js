@@ -23,15 +23,19 @@ class LoggedHome extends React.Component {
   };
 
   componentWillMount = async () => {
-    const res1 = await fetch("/auth/checkStatus", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json"
-      }
-    });
-    const res2 = await res1.json();
-    this.setState({ donorName: res2.user.name, email: res2.user.email });
+    try {
+      const res1 = await fetch("/auth/checkStatus", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        }
+      });
+      const res2 = await res1.json();
+      this.setState({ donorName: res2.user.name, email: res2.user.email });
+    } catch (er) {
+      console.log(er);
+    }
   };
 
   handleFormSubmit = async e => {
@@ -62,18 +66,21 @@ class LoggedHome extends React.Component {
       msg.innerHTML = "Phone Number must be exactly of length 10";
       return;
     }
-
-    const res1 = await fetch("/api/postStatus", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ payload })
-    });
-    const res2 = await res1.json();
-    var msg2 = document.getElementById("msg2");
-    msg2.innerHTML = "Posted.";
+    try {
+      const res1 = await fetch("/api/postStatus", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ payload })
+      });
+      const res2 = await res1.json();
+      var msg2 = document.getElementById("msg2");
+      msg2.innerHTML = "Posted.";
+    } catch (er) {
+      console.log(er);
+    }
   };
 
   sortCity = objArray => {
@@ -97,7 +104,9 @@ class LoggedHome extends React.Component {
     return (
       <React.Fragment>
         <Navbar />
-        <h2>Welcome {this.state.donorName}.</h2>
+        <h2>
+          <strong> Welcome {this.state.donorName}.</strong>
+        </h2>
         <form
           id="statusBox"
           onChange={this.handleFormChange}

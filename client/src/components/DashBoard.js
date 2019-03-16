@@ -220,17 +220,26 @@ class DashBoard extends React.Component {
               return (
                 <div id="mainBox">
                   <div id="box">
-                    <h1 id="group">Blood Group : {post.bloodGroup}</h1>
-                    <h2 id="location">Location : {post.location}</h2>
+                    <h1>
+                      Blood Group :<strong> {post.bloodGroup}</strong>
+                    </h1>
+                    <h4>
+                      Location : <strong> {post.location}</strong>
+                    </h4>
                     <br />
-                    <br />
-                    <br />
-                    <h2 id="phoneNumber">
-                      Donor Phone Number : {post.phoneNumber}
-                    </h2>
-                    <p>Donor Address : {post.address}</p>
-                    <p>Has any Diseases : {post.hasDisease}</p>
-                    <p>Have donated in 6 months ? {post.donatedEarlier}</p>
+                    <h4 id="phoneNumber">
+                      Donor Phone Number :<strong> {post.phoneNumber}</strong>
+                    </h4>
+                    <h4>
+                      Donor Address :<strong> {post.address}</strong>
+                    </h4>
+                    <h4>
+                      Has any Diseases :<strong> {post.hasDisease}</strong>
+                    </h4>
+                    <h4>
+                      Have donated in 6 months ?
+                      <strong> {post.donatedEarlier}</strong>
+                    </h4>
                   </div>
                   <br />
                 </div>

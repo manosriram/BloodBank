@@ -3,8 +3,8 @@
 }
 
 #authBox {
-  background: #ba2f16;
   position: absolute;
+  border: 10px solid greenyellow;
   color: #fff;
   top: 50%;
   left: 50%;
@@ -65,7 +65,7 @@ label {
 #form-switch:checked ~ #register-form {
   display: block;
 }
-#form-switch:checked ~ #login-form {
+#form-switch:checked ~ #loginBox {
   display: none;
 }
 

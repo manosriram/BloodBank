@@ -68,16 +68,20 @@ class Home extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-    const res1 = await fetch("/auth/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ payload })
-    });
-    const res2 = await res1.json();
-    this.setState({ logged: res2.logged });
+    try {
+      const res1 = await fetch("/auth/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ payload })
+      });
+      const res2 = await res1.json();
+      this.setState({ logged: res2.logged });
+    } catch (er) {
+      console.log(er);
+    }
   };
 
   handleFormSubmit = async e => {
@@ -135,13 +139,13 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <Navbar />
+
         <div id="authBox">
           <input type="checkbox" id="form-switch" />
           <div id="loginBox">
             <form
               id="login-form"
-              action=""
-              method="post"
+              method="POST"
               onChange={this.handleFormChange}
               onSubmit={this.handleLoginSubmit}
             >
@@ -193,6 +197,7 @@ class Home extends React.Component {
             <select id="cityState" name="location">
               <option selected>Select City</option>
             </select>
+            <br />
             <br />
             <input type="number" placeholder="Age" name="age" required />
             <label>Blood Group</label>{" "}

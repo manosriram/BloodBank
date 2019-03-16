@@ -1,3 +1,4 @@
+import Spinner from "react-spinner-material";
 import React from "react";
 import Navbar from "./Navbar";
 import "./dash.css";
@@ -6,9 +7,11 @@ class UserProfile extends React.Component {
   state = {
     details: {},
     posts: [],
-    deleted: null
+    deleted: null,
+    isSpinning: false
   };
   componentDidMount = async () => {
+    this.setState({ isSpinning: true });
     try {
       const res1 = await fetch("/auth/checkStatus", {
         method: "POST",
@@ -32,7 +35,7 @@ class UserProfile extends React.Component {
 
       const res4 = await res3.json();
 
-      this.setState({ posts: res4.posts });
+      this.setState({ posts: res4.posts, isSpinning: false });
     } catch (er) {
       console.log(er);
     }
@@ -40,19 +43,36 @@ class UserProfile extends React.Component {
 
   deletePost = async e => {
     console.log(e.target.name);
-    const res1 = await fetch("/api/deletePost", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ postID: e.target.name })
-    });
-    const res2 = await res1.json();
-    this.setState({ deleted: res2.deleted });
+    try {
+      const res1 = await fetch("/api/deletePost", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ postID: e.target.name })
+      });
+      const res2 = await res1.json();
+      this.setState({ deleted: res2.deleted });
+    } catch (er) {
+      console.log(er);
+    }
   };
 
   render() {
+    if (this.state.isSpinning === true) {
+      return (
+        <div>
+          <Spinner
+            size={80}
+            spinnerColor={"white"}
+            spinnerWidth={2}
+            visible={this.state.isSpinning}
+            id="spinner"
+          />
+        </div>
+      );
+    }
     return (
       <React.Fragment>
         <Navbar />
@@ -63,7 +83,11 @@ class UserProfile extends React.Component {
             <h2>{this.state.details.email}</h2>
           </div>
           {this.state.deleted === true && <h6>Post Deleted.</h6>}
-
+          <br />
+          <br />
+          <h1>{this.state.details.name}'s Posts.</h1>
+          <br />
+          <br />
           {this.state.posts.map((post, postID) => {
             return (
               <div>

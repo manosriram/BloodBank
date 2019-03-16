@@ -22,7 +22,6 @@ router.post("/getAllPostsByUser", (req, res) => {
       return res.json({ empty: false, posts: posts });
     })
     .catch(err => console.log(err));
-  console.log(email);
 });
 
 router.post("/searchPostsByBG", (req, res) => {
@@ -39,7 +38,6 @@ router.post("/searchPostsByBG", (req, res) => {
 });
 
 router.post("/searchPostsByLocation", (req, res) => {
-  console.log(req.body.location);
   const location = req.body.location;
   Donor.find({ location })
     .then(posts => {

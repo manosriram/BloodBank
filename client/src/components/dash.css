@@ -3,11 +3,10 @@
 }
 #box {
   text-align: center;
-  width: 70%;
+  width: 50%;
   margin: auto;
   height: auto;
   background: #f4f4f4;
-  width: 100%;
   border-radius: 20px;
 }
 
@@ -77,12 +76,15 @@ a {
   text-decoration: underline;
 }
 #userPosts {
-  width: 500px;
+  border-radius: 3px;
+  width: 55%;
   height: auto;
   margin: auto;
-  border: 1px solid #ba2f16;
+  border: 3px solid black;
 }
-
+#userPosts a {
+  text-decoration: underline;
+}
 #userInfo {
   width: 500px;
   height: auto;

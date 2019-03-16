@@ -45,6 +45,7 @@ router.post("/login", (req, res) => {
         .catch(err => console.log(err));
     })
     .catch(err => console.log(err));
+  console.log(`Logged : ${email}`);
 });
 
 router.post("/register", (req, res) => {

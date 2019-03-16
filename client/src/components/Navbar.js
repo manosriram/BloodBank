@@ -23,7 +23,6 @@ class Navbar extends React.Component {
         }
       });
       const re = await res1.json();
-      console.log(re);
       this.setState({ isLoggedIn: re.logged, user: re.user });
     } catch (error) {
       console.log(error);
