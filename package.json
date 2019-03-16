@@ -1,0 +1,26 @@
+{
+  "name": "bloodbank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "concurrently \"npm run index\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Mano Sriram",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.19",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "path": "^0.12.7",
+    "react-spinner-material": "^1.0.19"
+  }
+}

@@ -1,0 +1,104 @@
+* {
+  color: black;
+}
+
+#authBox {
+  background: lightblue;
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  padding: 15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#reg {
+  text-decoration: underline;
+}
+
+#cityState {
+  width: 300px;
+}
+
+form {
+  margin: 0 auto;
+  width: 300px;
+}
+input {
+  margin-bottom: 3px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+button {
+  padding: 10px;
+}
+label {
+  cursor: pointer;
+}
+#form-switch {
+  display: none;
+}
+#register-form {
+  display: none;
+}
+#form-switch:checked ~ #register-form {
+  display: block;
+}
+#form-switch:checked ~ #login-form {
+  display: none;
+}
+
+#yes {
+  cursor: pointer;
+  font-size: 3rem;
+  width: 500px;
+  background: red;
+}
+#no {
+  cursor: pointer;
+  width: 500px;
+  font-size: 3rem;
+  background: cyan;
+}
+#choice {
+  background: lightblue;
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  padding: 15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#statusBox {
+  border-radius: 6px;
+  width: auto;
+  background: lightblue;
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  padding: 15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#postStatus:hover {
+  background: beige;
+}
+
+#city {
+  width: 325px;
+  height: 40px;
+}
+
+#bloodGroup {
+  width: 325px;
+  height: 40px;
+}
