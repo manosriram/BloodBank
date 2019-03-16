@@ -3,7 +3,7 @@
 }
 
 #authBox {
-  background: lightblue;
+  background: #ba2f16;
   position: absolute;
   color: #fff;
   top: 50%;
@@ -15,7 +15,25 @@
 }
 
 #reg {
-  text-decoration: underline;
+  padding-bottom: 1px;
+  border-bottom: 1px solid white;
+  text-decoration: none;
+  font-weight: 700;
+  color: white;
+}
+
+#log {
+  padding-top: 5px;
+  border-color: #ba2f16;
+  background: white;
+  color: #ba2f16;
+  font-weight: 700;
+}
+
+#log:hover {
+  border-color: #ba2f16;
+  color: white;
+  background: #ff4848;
 }
 
 #cityState {
@@ -49,30 +67,6 @@ label {
 }
 #form-switch:checked ~ #login-form {
   display: none;
-}
-
-#yes {
-  cursor: pointer;
-  font-size: 3rem;
-  width: 500px;
-  background: red;
-}
-#no {
-  cursor: pointer;
-  width: 500px;
-  font-size: 3rem;
-  background: cyan;
-}
-#choice {
-  background: lightblue;
-  position: absolute;
-  color: #fff;
-  top: 50%;
-  left: 50%;
-  padding: 15px;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 
 #statusBox {

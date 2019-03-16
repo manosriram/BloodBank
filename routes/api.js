@@ -2,6 +2,15 @@ const express = require("express");
 const router = express.Router();
 const Donor = require("../Models/DonorList");
 
+router.post("/deletePost", (req, res) => {
+  const postID = req.body.postID;
+  Donor.deleteOne({ _id: postID })
+    .then(res => {
+      return res.json({ deleted: true });
+    })
+    .catch(err => console.log(err));
+});
+
 router.post("/getAllPostsByUser", (req, res) => {
   const email = req.body.email;
 

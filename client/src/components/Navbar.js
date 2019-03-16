@@ -41,7 +41,9 @@ class Navbar extends React.Component {
         <header>
           <nav id="navbar">
             <h1 className="logo">
-              <a href="/">Home</a>
+              <a href="/" id="home">
+                Home
+              </a>
             </h1>
             <ul>
               <li>

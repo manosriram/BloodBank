@@ -5,7 +5,8 @@ import "./dash.css";
 class UserProfile extends React.Component {
   state = {
     details: {},
-    posts: []
+    posts: [],
+    deleted: null
   };
   componentDidMount = async () => {
     try {
@@ -17,7 +18,6 @@ class UserProfile extends React.Component {
         }
       });
       const res2 = await res1.json();
-      console.log(res2);
       this.setState({ details: res2.user });
       const email = res2.user.email;
 
@@ -29,11 +29,27 @@ class UserProfile extends React.Component {
         },
         body: JSON.stringify({ email })
       });
+
       const res4 = await res3.json();
-      this.setState({ posts: res4.posts }, () => console.log(this.state));
+
+      this.setState({ posts: res4.posts });
     } catch (er) {
       console.log(er);
     }
+  };
+
+  deletePost = async e => {
+    console.log(e.target.name);
+    const res1 = await fetch("/api/deletePost", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ postID: e.target.name })
+    });
+    const res2 = await res1.json();
+    this.setState({ deleted: res2.deleted });
   };
 
   render() {
@@ -42,13 +58,26 @@ class UserProfile extends React.Component {
         <Navbar />
         <h1>User Profile.</h1>
         <div id="userBox">
-          <h1>{this.state.details.name}</h1>
+          <div id="userInfo">
+            <h1>{this.state.details.name}</h1>
+            <h2>{this.state.details.email}</h2>
+          </div>
+          {this.state.deleted === true && <h6>Post Deleted.</h6>}
+
           {this.state.posts.map((post, postID) => {
             return (
               <div>
-                <h3>Blood Group : {post.bloodGroup}</h3>
-                <h3>Location: {post.location}</h3>
-                <h3>{post.address}</h3>
+                <div id="userPosts">
+                  <h2>Blood Available : {post.bloodGroup}</h2>
+                  <h3>Phone Number : {post.phoneNumber}</h3>
+                  <h3>Has any Disease ? {post.hasDisease}</h3>
+                  <h3>Has Donated in 6 Months ? {post.donatedEarlier}</h3>
+                  <h2>{post.address}</h2>
+                  <a href="#" onClick={this.deletePost} name={post._id}>
+                    Delete
+                  </a>
+                </div>
+                <br />
               </div>
             );
           })}

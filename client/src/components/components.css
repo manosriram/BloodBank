@@ -20,12 +20,16 @@ p {
   margin: 10px 0;
 }
 
+input {
+  border-radius: 15px;
+}
+
 #navbar,
 nav {
   width: 100% !important;
   max-height: 70px;
   overflow: hidden;
-  background: #333;
+  background: #ba2f16;
   color: white;
 }
 
@@ -36,6 +40,19 @@ nav {
 #navbar h1 {
   float: left;
   padding-top: 10px;
+}
+
+#navbar h1 a {
+  text-decoration: none;
+}
+
+#navbar h1 a:hover {
+  background: white;
+  color: #e84342;
+}
+
+#home {
+  padding: 6px;
 }
 
 #navbar ul {
@@ -55,8 +72,9 @@ nav {
 }
 
 #navbar ul li a:hover {
-  background: #444;
-  color: #f7c08a;
+  background: white;
+  text-decoration: none;
+  color: #e84342;
 }
 .search-container {
   float: right;

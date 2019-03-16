@@ -30,14 +30,6 @@ class Home extends React.Component {
 
   componentDidMount = async () => {
     this.setState({ isSpinning: true });
-    this.sortCity(cities);
-    var el = document.getElementById("cityState");
-    for (var t = 0; t < cities.length; t++) {
-      var option = document.createElement("option");
-      option.text = `${cities[t].name}`;
-      option.value = `${cities[t].name}`;
-      el.add(option);
-    }
     try {
       const res1 = await fetch("/auth/checkStatus", {
         method: "POST",
@@ -53,6 +45,14 @@ class Home extends React.Component {
       });
     } catch (er) {
       console.log(er);
+    }
+    this.sortCity(cities);
+    var el = document.getElementById("cityState");
+    for (var t = 0; t < cities.length; t++) {
+      var option = document.createElement("option");
+      option.text = `${cities[t].name}`;
+      option.value = `${cities[t].name}`;
+      el.add(option);
     }
   };
 
@@ -137,28 +137,35 @@ class Home extends React.Component {
         <Navbar />
         <div id="authBox">
           <input type="checkbox" id="form-switch" />
-          <form
-            id="login-form"
-            action=""
-            method="post"
-            onChange={this.handleFormChange}
-            onSubmit={this.handleLoginSubmit}
-          >
-            <input type="email" placeholder="Email" name="email" required />
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              required
-            />
-            <button type="submit" className="btn btn-outline-primary">
-              Login
-            </button>
-            {"  "} or {"    "}
-            <label htmlFor="form-switch">
-              <span id="reg">Register</span>
-            </label>
-          </form>
+          <div id="loginBox">
+            <form
+              id="login-form"
+              action=""
+              method="post"
+              onChange={this.handleFormChange}
+              onSubmit={this.handleLoginSubmit}
+            >
+              <input type="email" placeholder="Email" name="email" required />
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+              />
+              <button
+                type="submit"
+                className="btn btn-outline-primary"
+                id="log"
+              >
+                Login
+              </button>
+              {"  "} or {"    "}
+              <label htmlFor="form-switch">
+                <span id="reg">Register</span>
+              </label>
+            </form>
+          </div>
+
           <form
             id="register-form"
             action=""
@@ -182,9 +189,8 @@ class Home extends React.Component {
               name="repeatPassword"
               required
             />
-            {/* <input type="text" placeholder="Location" name="location" required /> */}
             <label>Location :</label>
-            <select name="" id="cityState" name="location">
+            <select id="cityState" name="location">
               <option selected>Select City</option>
             </select>
             <br />
@@ -207,10 +213,12 @@ class Home extends React.Component {
               name="address"
               required
             />
-            <button type="submit" className="btn btn-outline-primary">
+            <button type="submit" className="btn btn-outline-primary" id="log">
               Register
             </button>
-            <label htmlFor="form-switch">Already Member ? Sign In Now..</label>
+            <label htmlFor="form-switch" id="signIN">
+              Already Member ? Sign In Now..
+            </label>
           </form>
         </div>
       </React.Fragment>

@@ -57,6 +57,12 @@ class LoggedHome extends React.Component {
       msg.innerHTML = "Please Fill all the Fields.";
       return;
     }
+    if (payload.phoneNumber.length !== 10) {
+      var msg = document.getElementById("msg");
+      msg.innerHTML = "Phone Number must be exactly of length 10";
+      return;
+    }
+
     const res1 = await fetch("/api/postStatus", {
       method: "POST",
       headers: {

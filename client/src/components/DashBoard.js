@@ -228,9 +228,9 @@ class DashBoard extends React.Component {
                     <h2 id="phoneNumber">
                       Donor Phone Number : {post.phoneNumber}
                     </h2>
-                    <h3>Donor Address : {post.address}</h3>
-                    <h3>Has any Diseases : {post.hasDisease}</h3>
-                    <h3>Have donated in 6 months ? {post.donatedEarlier}</h3>
+                    <p>Donor Address : {post.address}</p>
+                    <p>Has any Diseases : {post.hasDisease}</p>
+                    <p>Have donated in 6 months ? {post.donatedEarlier}</p>
                   </div>
                   <br />
                 </div>
